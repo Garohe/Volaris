@@ -1,0 +1,275 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+  color: #2c2c2c;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+}
+
+section {
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* VARIABLES */
+:root {
+  --violeta: #6751e8;
+  --azul: #4b7bf5;
+  --mostaza: #e0b841;
+  --verde: #3bb27a;
+  --moradazo: #5a4ebf;
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  z-index: 10;
+}
+
+header h1 {
+  color: var(--violeta);
+  font-weight: 700;
+}
+
+header nav a {
+  text-decoration: none;
+  color: #333;
+  margin: 0 15px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+header nav a:hover {
+  color: var(--violeta);
+}
+
+/* LAYOUT */
+.wrap {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  gap: 60px;
+}
+
+.texto {
+  text-align: left;
+}
+
+@media (max-width: 900px) {
+  .wrap {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .texto {
+    text-align: center;
+  }
+}
+
+/* FIGURA PRINCIPAL */
+.figure-bowl {
+  position: relative;
+  width: clamp(260px, 38vw, 480px);
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  margin-inline: auto;
+  background: #fff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.bowl-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* --- Aro de color fino y elegante --- */
+section > .wrap .ring::before {
+  content: "";
+  position: absolute;
+  inset: -2%; /* 🔹 era -3%, se ajusta para acercar el aro al borde */
+  border-radius: 50%;
+  background: conic-gradient(
+    from 270deg,
+    transparent 0 62%,   /* 🔹 parte transparente */
+    currentColor 50% 50%,/* 🔹 grosor del arco (delgado) */
+    transparent 0% 0% /* 🔹 el resto vuelve a ser transparente */
+  );
+  z-index: 0;
+  opacity: 0.8;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+}
+
+/* Colores de aro */
+.ring--violeta { color: var(--violeta); }
+.ring--azul { color: var(--azul); }
+.ring--mostaza { color: var(--mostaza); }
+.ring--verde { color: var(--verde); }
+
+/* Secciones */
+#home {
+  background: linear-gradient(90deg, #eef3ff, #ffffff 60%);
+}
+#calories {
+  background: linear-gradient(90deg, #ede7f6, #ffffff 65%);
+}
+#about {
+  background: #ffffff;
+}
+#menu {
+  background: var(--moradazo);
+  color: #fff;
+}
+#contact {
+  background: linear-gradient(90deg, #f6f8ff, #ffffff 60%);
+}
+
+/* TEXTOS */
+h2 {
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 700;
+}
+
+h2 span {
+  color: var(--violeta);
+}
+
+.script {
+  font-family: "Pacifico", cursive;
+  color: var(--violeta);
+  font-size: 1.15em;
+}
+
+p {
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* BOTONES */
+button {
+  margin-top: 1rem;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 30px;
+  background: #e53935;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #c62828;
+}
+
+.btn-morado {
+  background: var(--violeta);
+}
+
+.btn-morado:hover {
+  background: #4b3ed9;
+}
+
+/* MENU ITEMS */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+#menu .item {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  padding: 25px;
+  width: 240px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+#menu .item:hover {
+  transform: translateY(-6px);
+}
+
+#menu .item h3,
+#menu .item p {
+  color: #fff;
+}
+
+.menu-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* CONTACT */
+blockquote {
+  font-style: italic;
+  margin-bottom: 20px;
+  max-width: 500px;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+input[type="email"] {
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  outline: none;
+  width: 250px;
+  font-size: 1rem;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: #777;
+}
