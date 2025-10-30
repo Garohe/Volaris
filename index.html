@@ -1,143 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hieu Bowl - Vietnamese Kitchen</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="estilos.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Vuelos</title>
+    <link rel="stylesheet" href="menu.css">
 </head>
 <body>
 
-  <!-- Section 1 -->
-  <section id="home" class="ventana">
-    <header>
-      <h1 class="logo">Hieu Bowl</h1>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#calories">Calories</a>
-        <a href="#about">About</a>
-        <a href="#menu">Menu</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-
-    <div class="wrap">
-      <div class="texto">
-        <h2><strong>Rice</strong> <span>Bowl</span></h2>
-        <p>Lorem ipsum is simply dummy text of the printing and typesetting industry.</p>
-        <button>View Our Menu</button>
-      </div>
-
-      <figure class="figure-bowl ring ring--violeta">
-        <img src="comida.jpg" alt="Rice bowl" class="bowl-img">
-      </figure>
+    <div class="barra-lateral">
+        <div>
+            <div class="perfil">
+                <img src="https://i.pravatar.cc/70" alt="perfil">
+                <h3>Alex Johnson</h3>
+                <p>alex.johnson@gmail.com</p>
+            </div>
+            <nav>
+                <ul>
+                    <li class="activo" onclick="mostrarSeccion('panel', event)"><a href="#">Panel</a></li>
+                    <li onclick="mostrarSeccion('vuelos', event)"><a href="#">Vuelos</a></li>
+                    <li onclick="mostrarSeccion('billetera', event)"><a href="#">Billetera</a></li>
+                    <li onclick="mostrarSeccion('reportes', event)"><a href="#">Reportes</a></li>
+                    <li onclick="mostrarSeccion('estadisticas', event)"><a href="#">Estadísticas</a></li>
+                    <li onclick="mostrarSeccion('ajustes', event)"><a href="#">Ajustes</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="parte-inferior">
+            <div class="usuarios-activos">
+                <img src="https://i.pravatar.cc/30?img=1">
+                <img src="https://i.pravatar.cc/30?img=2">
+                <img src="https://i.pravatar.cc/30?img=3">
+                <img src="https://i.pravatar.cc/30?img=4">
+            </div>
+            <p>+70 Usuarios activos</p>
+        </div>
     </div>
-  </section>
 
-  <!-- Section 2 -->
-  <section id="calories" class="ventana">
-    <div class="wrap">
-      <div class="texto">
-        <h2>What Should I Eat If I Am?</h2>
-        <p>Plan your meals based on calorie goals and dietary preferences.</p>
-        <button class="btn-morado">Counting Calories 🔥</button>
-      </div>
+    <div class="principal">
+        <section id="panel">
+            <div class="seccion-superior">
+                <div class="tarjeta"><h4>Boeing 787</h4><p>$548</p></div>
+                <div class="tarjeta"><h4>Airbus 811</h4><p>$620</p></div>
+                <div class="tarjeta"><h4>Total de vuelos</h4><p>850</p></div>
+            </div>
 
-      <figure class="figure-bowl ring ring--azul">
-        <img src="comida2.jpg" alt="Calories bowl" class="bowl-img">
-      </figure>
+            <div class="contenido">
+                <div class="grafica">
+                    <h4>Últimos viajes</h4>
+                    <table>
+                        <tr><th>Miembros</th><th>Vuelo</th><th>Cantidad</th><th>Precio</th></tr>
+                        <tr><td>John Dee</td><td>Qatar</td><td>2</td><td>$56k</td></tr>
+                        <tr><td>Martin Leisses</td><td>Emirates</td><td>2</td><td>$56k</td></tr>
+                    </table>
+                </div>
+
+                <div class="participacion">
+                    <h4>Participación de vuelos</h4>
+                    <canvas id="graficaPastel" width="200" height="200"></canvas>
+                </div>
+            </div>
+
+            <div class="horarios" style="margin-top:20px;">
+                <h4>Horarios de vuelos</h4>
+                <canvas id="graficaLineal" width="400" height="150"></canvas>
+            </div>
+        </section>
+
+        <section id="vuelos" class="oculto"><h2>Sección de vuelos</h2><p>Información sobre vuelos.</p></section>
+        <section id="billetera" class="oculto"><h2>Sección de billetera</h2><p>Información sobre pagos.</p></section>
+        <section id="reportes" class="oculto"><h2>Sección de reportes</h2><p>Visualiza los reportes.</p></section>
+        <section id="estadisticas" class="oculto"><h2>Sección de estadísticas</h2><p>Gráficas de rendimiento.</p></section>
+        <section id="ajustes" class="oculto"><h2>Sección de ajustes</h2><p>Configuraciones generales.</p></section>
     </div>
-  </section>
 
-  <!-- Section 3 -->
-  <section id="about" class="ventana">
-    <div class="wrap">
-      <figure class="figure-bowl ring ring--mostaza">
-        <img src="comida3.jpg" alt="About bowl" class="bowl-img">
-      </figure>
-
-      <div class="texto">
-        <h2>About <span class="script">hien bowl</span></h2>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-           Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-        <button>View Our Menu</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 4 -->
-  <section id="menu" class="ventana">
-    <h2>Our Menu</h2>
-    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry.</p>
-
-    <div class="menu">
-      <div class="item">
-        <img src="bowl1.jpg" alt="Dish 1" class="menu-img">
-        <h3>Your Heading Here</h3>
-        <p>Only $24.00</p>
-        <button>Buy Now</button>
-      </div>
-
-      <div class="item">
-        <img src="bowl2.jpg" alt="Dish 2" class="menu-img">
-        <h3>Your Heading Here</h3>
-        <p>Only $24.00</p>
-        <button>Buy Now</button>
-      </div>
-
-      <div class="item">
-        <img src="bowl.jpg" alt="Dish 3" class="menu-img">
-        <h3>Your Heading Here</h3>
-        <p>Only $24.00</p>
-        <button>Buy Now</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 5 -->
-  <section id="contact" class="ventana">
-    <div class="wrap">
-      <div class="texto">
-        <h2>Our Happy Customers</h2>
-        <blockquote>
-          “Lorem ipsum is simply dummy text of the printing and typesetting industry.”
-          <br><strong>– Malte Kramer</strong><br>
-          <span>@Luxury Presence</span>
-        </blockquote>
-        <h3>Ready to get started?</h3>
-        <p>Get a guided demo. Lorem ipsum dolor sit amet.</p>
-        <form>
-          <input type="email" placeholder="Your email address">
-          <button>Get Started</button>
-        </form>
-      </div>
-
-      <figure class="figure-bowl ring ring--verde">
-        <img src="comida4.jpg" alt="Contact bowl" class="bowl-img">
-      </figure>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Hieu Bowl. All rights reserved.</p>
-  </footer>
-
-  <script>
-    const sections = document.querySelectorAll("section");
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function mostrarSeccion(id, event) {
+            document.querySelectorAll('section').forEach(sec => sec.classList.add('oculto'));
+            document.getElementById(id).classList.remove('oculto');
+            document.querySelectorAll('nav ul li').forEach(li => li.classList.remove('activo'));
+            event.currentTarget.classList.add('activo');
         }
-      });
-    }, { threshold: 0.3 });
-    sections.forEach(sec => observer.observe(sec));
-  </script>
 
+        const pastel = document.getElementById('graficaPastel').getContext('2d');
+        new Chart(pastel, {
+            type: 'doughnut',
+            data: {
+                labels: ['Boeing 787', 'Airbus 811'],
+                datasets: [{ data: [45, 55], backgroundColor: ['#f1c40f', '#2ecc71'] }]
+            }
+        });
+
+        const lineal = document.getElementById('graficaLineal').getContext('2d');
+        new Chart(lineal, {
+            type: 'line',
+            data: {
+                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+                datasets: [{ label: 'Pasajeros', data: [2000, 2500, 3000, 3500, 4000, 4200], borderColor: '#f1c40f', fill: false }]
+            }
+        });
+    </script>
 </body>
 </html>
