@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Vuelos</title>
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+
+    <div class="barra-lateral">
+        <div>
+            <div class="perfil">
+                <img src="https://i.pravatar.cc/70" alt="perfil">
+                <h3>Alex Johnson</h3>
+                <p>alex.johnson@gmail.com</p>
+            </div>
+            <nav>
+                <ul>
+                    <li class="activo" onclick="mostrarSeccion('panel', event)"><a href="#">Panel</a></li>
+                    <li onclick="mostrarSeccion('vuelos', event)"><a href="#">Vuelos</a></li>
+                    <li onclick="mostrarSeccion('billetera', event)"><a href="#">Billetera</a></li>
+                    <li onclick="mostrarSeccion('reportes', event)"><a href="#">Reportes</a></li>
+                    <li onclick="mostrarSeccion('estadisticas', event)"><a href="#">Estadísticas</a></li>
+                    <li onclick="mostrarSeccion('ajustes', event)"><a href="#">Ajustes</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="parte-inferior">
+            <div class="usuarios-activos">
+                <img src="https://i.pravatar.cc/30?img=1">
+                <img src="https://i.pravatar.cc/30?img=2">
+                <img src="https://i.pravatar.cc/30?img=3">
+                <img src="https://i.pravatar.cc/30?img=4">
+            </div>
+            <p>+70 Usuarios activos</p>
+        </div>
+    </div>
+
+    <div class="principal">
+        <section id="panel">
+            <div class="seccion-superior">
+                <div class="tarjeta"><h4>Boeing 787</h4><p>$548</p></div>
+                <div class="tarjeta"><h4>Airbus 811</h4><p>$620</p></div>
+                <div class="tarjeta"><h4>Total de vuelos</h4><p>850</p></div>
+            </div>
+
+            <div class="contenido">
+                <div class="grafica">
+                    <h4>Últimos viajes</h4>
+                    <table>
+                        <tr><th>Miembros</th><th>Vuelo</th><th>Cantidad</th><th>Precio</th></tr>
+                        <tr><td>John Dee</td><td>Qatar</td><td>2</td><td>$56k</td></tr>
+                        <tr><td>Martin Leisses</td><td>Emirates</td><td>2</td><td>$56k</td></tr>
+                    </table>
+                </div>
+
+                <div class="participacion">
+                    <h4>Participación de vuelos</h4>
+                    <canvas id="graficaPastel" width="200" height="200"></canvas>
+                </div>
+            </div>
+
+            <div class="horarios" style="margin-top:20px;">
+                <h4>Horarios de vuelos</h4>
+                <canvas id="graficaLineal" width="400" height="150"></canvas>
+            </div>
+        </section>
+
+        <section id="vuelos" class="oculto"><h2>Sección de vuelos</h2><p>Información sobre vuelos.</p></section>
+        <section id="billetera" class="oculto"><h2>Sección de billetera</h2><p>Información sobre pagos.</p></section>
+        <section id="reportes" class="oculto"><h2>Sección de reportes</h2><p>Visualiza los reportes.</p></section>
+        <section id="estadisticas" class="oculto"><h2>Sección de estadísticas</h2><p>Gráficas de rendimiento.</p></section>
+        <section id="ajustes" class="oculto"><h2>Sección de ajustes</h2><p>Configuraciones generales.</p></section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function mostrarSeccion(id, event) {
+            document.querySelectorAll('section').forEach(sec => sec.classList.add('oculto'));
+            document.getElementById(id).classList.remove('oculto');
+            document.querySelectorAll('nav ul li').forEach(li => li.classList.remove('activo'));
+            event.currentTarget.classList.add('activo');
+        }
+
+        const pastel = document.getElementById('graficaPastel').getContext('2d');
+        new Chart(pastel, {
+            type: 'doughnut',
+            data: {
+                labels: ['Boeing 787', 'Airbus 811'],
+                datasets: [{ data: [45, 55], backgroundColor: ['#f1c40f', '#2ecc71'] }]
+            }
+        });
+
+        const lineal = document.getElementById('graficaLineal').getContext('2d');
+        new Chart(lineal, {
+            type: 'line',
+            data: {
+                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+                datasets: [{ label: 'Pasajeros', data: [2000, 2500, 3000, 3500, 4000, 4200], borderColor: '#f1c40f', fill: false }]
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+/* -----------------------------
+   ESTILOS PRINCIPALES - PANEL DE VUELOS
+------------------------------ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f5f8f8;
+    display: flex;
+}
+
+/* -----------------------------
+   BARRA LATERAL
+------------------------------ */
+.barra-lateral {
+    width: 250px;
+    background: #314a45;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.perfil {
+    text-align: center;
+}
+
+.perfil img {
+    width: 70px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.perfil h3 {
+    font-size: 18px;
+}
+
+.perfil p {
+    font-size: 13px;
+    color: #cdd6d3;
+}
+
+nav ul {
+    list-style: none;
+    position: relative;
+}
+
+nav ul li {
+    padding: 12px 30px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    margin: 8px 15px;
+    border-radius: 50px;
+    text-align: left;
+    position: relative;
+    color: white;
+    overflow: visible;
+    font-weight: 500;
+}
+
+/* Óvalo correcto con texto visible */
+nav ul li.activo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50px;
+    width: calc(100% + 70px);
+    height: 100%;
+    background: #f5f8f8;
+    border-radius: 50px;
+    box-shadow: 6px 0 15px rgba(0, 0, 0, 0.08);
+    z-index: 0;
+    transform: translateX(30px);
+}
+
+nav ul li.activo a {
+    color: #314a45;
+    font-weight: 600;
+    position: relative;
+    z-index: 2;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative;
+    z-index: 2;
+}
+
+nav ul li:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50px;
+}
+
+.parte-inferior {
+    padding: 20px;
+    text-align: center;
+}
+
+.usuarios-activos {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.usuarios-activos img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: -8px;
+    border: 2px solid #314a45;
+}
+
+/* -----------------------------
+   CONTENIDO PRINCIPAL
+------------------------------ */
+.principal {
+    flex: 1;
+    padding: 20px;
+}
+
+.seccion-superior {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tarjeta {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1;
+    margin-right: 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.tarjeta:last-child {
+    margin-right: 0;
+}
+
+.tarjeta h4 {
+    color: #333;
+}
+
+.tarjeta p {
+    font-size: 22px;
+    color: #555;
+}
+
+.contenido {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background: #f0f3f2;
+}
+
+.grafica, .participacion, .horarios {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.grafica h4, .participacion h4, .horarios h4 {
+    margin-bottom: 10px;
+}
+
+.oculto {
+    display: none;
+}
